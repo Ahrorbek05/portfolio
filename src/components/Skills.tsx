@@ -1,96 +1,63 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { ThemeContext } from "../context/Theme";
+
 export const Skills = () => {
-    const skills = [
-        {
-            name: "React",
-            level: 90,
-        },
-        {
-            name: "JavaScript",
-            level: 85,
-        },
-        {
-            name: "Tailwind Css",
-            level: 80,
-        },
-        {
-            name: "TypeScript",
-            level: 75,
-        },
-        {
-            name: "HTML",
-            level: 95,
-        },
-        {
-            name: "CSS",
-            level: 95,
-        },
-    ];
-    return (
-        <section id="skills" className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-                <motion.h2
-                    initial={{
-                        opacity: 0,
-                        y: 20,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
-                    className="text-3xl font-bold text-center mb-12"
-                >
-                    Skills
-                </motion.h2>
-                <div className="max-w-3xl mx-auto">
-                    {skills.map((skill, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{
-                                opacity: 0,
-                                x: -20,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                x: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                            }}
-                            transition={{
-                                delay: index * 0.1,
-                            }}
-                            className="mb-6"
-                        >
-                            <div className="flex justify-between mb-2">
-                                <span className="font-medium">{skill.name}</span>
-                                <span className="text-gray-600">{skill.level}%</span>
-                            </div>
-                            <div className="h-2 bg-gray-200 rounded-full">
-                                <motion.div
-                                    initial={{
-                                        width: 0,
-                                    }}
-                                    whileInView={{
-                                        width: `${skill.level}%`,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                    }}
-                                    transition={{
-                                        duration: 1,
-                                        delay: index * 0.1,
-                                    }}
-                                    className="h-full bg-blue-600 rounded-full"
-                                />
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+  const { darkmode } = useContext(ThemeContext);
+
+  const skills = [
+    "React",
+    "Next",
+    "JavaScript",
+    "Tailwind CSS",
+    "Material UI",
+    "Bootstrap 5",
+    "Framer Motion",
+    "Scss",
+    "Redux",
+    "RestAPI",
+    "TypeScript",
+    "Git",
+    "Github",
+    "HTML",
+    "CSS",
+  ];
+
+  return (
+    <section
+      id="skills"
+      className={`py-20 overflow-hidden transition-colors duration-300 ${
+        darkmode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
+    >
+      <div className="container mx-auto px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold text-center mb-12"
+        >
+          Skills
+        </motion.h2>
+        <div className="w-full overflow-hidden relative">
+          <motion.div
+            className="flex space-x-8 text-lg font-medium whitespace-nowrap"
+            animate={{ x: [0, "-100%"] }}
+            transition={{ repeat: Infinity, duration: 17, ease: "linear" }}
+          >
+            {[...skills, ...skills].map((skill, index) => (
+              <div
+                key={index}
+                className={`p-4 rounded-lg shadow-sm min-w-[150px] text-center transition-colors duration-300 ${
+                  darkmode ? "bg-gray-800 text-white" : "bg-gray-100 text-black"
+                }`}
+              >
+                {skill}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 };
