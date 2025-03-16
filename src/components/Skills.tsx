@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import  { useContext } from "react";
 import { ThemeContext } from "../context/Theme";
 
 export const Skills = () => {
