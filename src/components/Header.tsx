@@ -8,7 +8,7 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuItems = ["Home", "About", "Projects", "Skills", "Contact"];
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
